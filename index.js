@@ -1,13 +1,13 @@
-const express = require 'express'
+const express = require('express')
 const app = express()
 const http = require('http').Server(app)
 const bodyParser = require('body-parser')
 const path = require('path')
 const socket = require('socket.io')
 
-const io = socket(app)
+const io = socket(http)
 
-const publicPath = path.join(_dirname, 'public')
+const publicPath = path.join(__dirname, 'public')
 const staticMiddleware = express.static(publicPath)
 const jsonParser = bodyParser.json()
 
