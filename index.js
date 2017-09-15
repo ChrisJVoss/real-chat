@@ -17,6 +17,9 @@ app.use(jsonParser)
 
 io.on('connection', (socket) => {
   console.log('User connected.')
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg)
+  })
   socket.on('disconnect', () => {
     console.log('User disconnected.')
   })
