@@ -1,12 +1,10 @@
 const io = require('socket.io-client')
 const socket = io()
 
-function sendMessage = () {
-  const $form = document.getElementById('form')
-  $form.submit( () => {
-    socket.emit('chat message', document.getElementById('message').value)
-    document.getElementById('message').value = ''
-    return false
-  })
+const $form = document.getElementById('form')
+$form.addEventListener('submit', onSubmit, false)
+
+function onSubmit(event) {
+  event.preventDefault()
+  console.log("submitted")
 }
-sendMessage()
