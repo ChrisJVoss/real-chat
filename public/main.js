@@ -7,6 +7,12 @@ function onSubmit(event) {
   socket.emit('chat message', document.getElementById('message').value)
   document.getElementById('message').value = ''
 }
+socket.on('chat message', (msg) => {
+  const $messages = document.getElementById('messages')
+  let $sentMessage = document.createElement('li')
+  $sentMessage.textContent = msg
+  $messages.append($sentMessage)
+})
 
 const $form = document.getElementById('form')
 $form.addEventListener('submit', onSubmit, false)
