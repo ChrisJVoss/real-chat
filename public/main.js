@@ -40,5 +40,8 @@ function getInfo() {
     if (username === users[i].username && password === users[i].password) {
       console.log(username + ' is logged in!')
     }
+    else {
+      console.log('Incorrect username or password')
+    }
   }
 }
