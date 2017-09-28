@@ -16,3 +16,29 @@ socket.on('chat message', (msg) => {
 
 const $form = document.getElementById('form')
 $form.addEventListener('submit', onSubmit, false)
+
+let users = [
+  {
+    username: 'chris',
+    password: 'ilovecode'
+  },
+  {
+    username: 'jody',
+    password: 'ilovefood'
+  },
+  {
+    username: 'john',
+    password: 'iloveskiing'
+  },
+]
+
+function getInfo() {
+  const username = document.getElementById('username').value
+  const password = document.getElementById('password').value
+
+  for (i = 0; i < users.length; i++) {
+    if (username === users[i].username && password === users[i].password) {
+      console.log(username + ' is logged in!')
+    }
+  }
+}
