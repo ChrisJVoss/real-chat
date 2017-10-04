@@ -75,3 +75,6 @@ const $views = document.querySelectorAll('.view')
 const router = new HashRouter($views)
 
 router.listen()
+
+const $userForm = document.getElementById('userForm')
+const $username = document.getElementsByClassName('username')
