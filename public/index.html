@@ -20,12 +20,17 @@
         </div>
       </div>
     </div>
-    <div id="loginPage">
-      <form>
-        <input id="username">
-        <input id="password">
-        <button type="button" onclick="getInfo()">Log in</button>
+    <div id="loginPage" class="row">
+      <div class="col-md-12">
+      <form id="userForm">
+        <div class="form-group">
+          <label>Enter Username</label>
+          <input class="form-control" id="username"/>
+          <br/>
+          <input type="submt" class="btn btn-primary" value="Log in"/>
+        </div>
       </form>
+      </div>
     </div>
     <script src="bundle.js"></script>
   </body>
