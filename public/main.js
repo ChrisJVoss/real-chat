@@ -45,3 +45,33 @@ function getInfo() {
     }
   }
 }
+
+class HashRouter {
+  constructor($views) {
+    this.$views = $views
+    this.isListening = false
+  }
+  match(hash) {
+    const viewId = hash.replace('#', '')
+    this.$views.forEach($view => {
+      if ($view.id === viewId) {
+        $view.classList.remove('hidden')
+      }
+      else {
+        $view.classList.add('hidden')
+      }
+    })
+  }
+  listen() {
+    if (this.isListening) return
+    window.addEventListener('hashchange', () => {
+      this.match(window.location.hash)
+    })
+    this.isListening = true
+  }
+}
+
+const $views = document.querySelectorAll('.view')
+const router = new HashRouter($views)
+
+router.listen()

@@ -15,13 +15,16 @@ app.use(staticMiddleware)
 
 app.use(jsonParser)
 
+const connections = []
 io.on('connection', (socket) => {
   console.log('User connected.')
+  connections.push(socket)
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg)
   })
   socket.on('disconnect', () => {
     console.log('User disconnected.')
+    connections.splice(connections.indexOf(socket), 1)
   })
 })
 
