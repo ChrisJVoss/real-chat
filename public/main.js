@@ -4,47 +4,23 @@ const socket = io()
 function onSubmit(event) {
   event.preventDefault()
   console.log('submitted')
-  socket.emit('chat message', document.getElementById('message').value)
-  document.getElementById('message').value = ''
+  const $message = document.getElementById('message')
+  socket.emit('chat message', $message.value)
+  $message.value = ''
 }
 socket.on('chat message', (msg) => {
-  const $messages = document.getElementById('messages')
-  let $sentMessage = document.createElement('li')
-  $sentMessage.textContent = msg
-  $messages.append($sentMessage)
+  let $chat = document.getElementById('chat')
+  let $newMessage = document.createElement('div')
+  $newMessage.classList.add('well')
+  $newMessage.textContent = msg
+  $chat.appendChild($newMessage)
 })
 
-const $form = document.getElementById('form')
+const $form = document.getElementById('messageForm')
 $form.addEventListener('submit', onSubmit, false)
 
-let users = [
-  {
-    username: 'chris',
-    password: 'ilovecode'
-  },
-  {
-    username: 'jody',
-    password: 'ilovefood'
-  },
-  {
-    username: 'john',
-    password: 'iloveskiing'
-  },
-]
 
-function getInfo() {
-  const username = document.getElementById('username').value
-  const password = document.getElementById('password').value
 
-  for (i = 0; i < users.length; i++) {
-    if (username === users[i].username && password === users[i].password) {
-      console.log(username + ' is logged in!')
-    }
-    else {
-      console.log('Incorrect username or password')
-    }
-  }
-}
 
 class HashRouter {
   constructor($views) {
@@ -72,6 +48,7 @@ class HashRouter {
 }
 
 const $views = document.querySelectorAll('.view')
+console.log($views)
 const router = new HashRouter($views)
 
 router.listen()
