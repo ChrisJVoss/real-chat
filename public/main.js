@@ -22,14 +22,30 @@ $form.addEventListener('submit', onSubmit, false)
 function getUsername(event) {
   event.preventDefault()
   const $username = document.getElementsByClassName('username')
-  socket.emit('new user', $username.)
+  socket.emit('new user', $username.value, (data) => {
+    if (data) {
+      const $userFormArea = document.getElementById('userFormArea')
+      const $messageArea = document.getElementById('messageArea')
+      $messageArea.classList.remove('hidden')
+      $userFormArea.classList.add('hidden')
+
+    }
+  })
 }
 
 const $userForm = document.getElementById('userForm')
 $userForm.addEventListener('submit', getUsername, false)
 
+sockt.on('get users', (data) => {
+  const $users = document.getElementById('users')
+  for (i = 0; i <  data.length; i++) {
+    const $li = document.createElement('li')
+     $li.textContent = data[i]
+     $users.appendChild($li)
+  }
+})
 
-class HashRouter {
+/* class HashRouter {
   constructor($views) {
     this.$views = $views
     this.isListening = false
@@ -59,3 +75,4 @@ console.log($views)
 const router = new HashRouter($views)
 
 router.listen()
+*/

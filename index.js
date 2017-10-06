@@ -27,12 +27,17 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected.')
     connections.splice(connections.indexOf(socket), 1)
+    users.splice(users.indexOf(socket.username), 1)
+    updateUsernames()
   })
   socket.on('new user', (data) => {
     socket.username = data
-    user.push()
-
+    user.push(socket.username)
+    updateUsernames()
   })
+  function updateUsernames() {
+    io.socket.emit('get users', users)
+  }
 })
 
 http.listen(3000, () => {
