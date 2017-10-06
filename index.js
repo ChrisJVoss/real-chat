@@ -16,6 +16,8 @@ app.use(staticMiddleware)
 app.use(jsonParser)
 
 const connections = []
+const users = []
+
 io.on('connection', (socket) => {
   console.log('User connected.')
   connections.push(socket)
@@ -25,6 +27,11 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected.')
     connections.splice(connections.indexOf(socket), 1)
+  })
+  socket.on('new user', (data) => {
+    socket.username = data
+    user.push()
+
   })
 })
 

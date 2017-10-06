@@ -19,7 +19,14 @@ socket.on('chat message', (msg) => {
 const $form = document.getElementById('messageForm')
 $form.addEventListener('submit', onSubmit, false)
 
+function getUsername(event) {
+  event.preventDefault()
+  const $username = document.getElementsByClassName('username')
+  socket.emit('new user', $username.)
+}
 
+const $userForm = document.getElementById('userForm')
+$userForm.addEventListener('submit', getUsername, false)
 
 
 class HashRouter {
@@ -52,6 +59,3 @@ console.log($views)
 const router = new HashRouter($views)
 
 router.listen()
-
-const $userForm = document.getElementById('userForm')
-const $username = document.getElementsByClassName('username')
