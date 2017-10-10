@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
   console.log('User connected.')
   connections.push(socket)
   socket.on('send message', (msg) => {
-    io.emit('send message', msg: data, user: socket.username)
+    io.emit('send message', {msg: data, user: socket.username})
   })
   socket.on('disconnect', () => {
     console.log('User disconnected.')
@@ -32,11 +32,11 @@ io.on('connection', (socket) => {
   })
   socket.on('new user', (data) => {
     socket.username = data
-    user.push(socket.username)
+    users.push(socket.username)
     updateUsernames()
   })
   function updateUsernames() {
-    io.socket.emit('get users', users)
+    io.emit('get users', users)
   }
 })
 

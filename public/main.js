@@ -8,16 +8,6 @@ function onSubmit(event) {
   socket.emit('chat message', $message.value)
   $message.value = ''
 }
-socket.on('send message', (data) => {
-  let $chat = document.getElementById('chat')
-  let $newMessage = document.createElement('div')
-  let $username = document.createElement('strong')
-  $username.textContent = data.user + ':'
-  $newMessage.classList.add('well')
-  $newMessage.appendChild($username)
-  $newMessage.textContent = data.msg
-  $chat.appendChild($newMessage)
-})
 
 const $form = document.getElementById('messageForm')
 $form.addEventListener('submit', onSubmit, false)
@@ -39,9 +29,9 @@ function getUsername(event) {
 const $userForm = document.getElementById('userForm')
 $userForm.addEventListener('submit', getUsername, false)
 
-sockt.on('get users', (data) => {
+socket.on('get users', (data) => {
   const $users = document.getElementById('users')
-  for (i = 0; i <  data.length; i++) {
+  for (let i = 0; i <  data.length; i++) {
     const $li = document.createElement('li')
      $li.textContent = data[i]
      $users.appendChild($li)
