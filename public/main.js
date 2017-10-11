@@ -3,13 +3,11 @@ const socket = io()
 
 function onSubmit(event) {
   event.preventDefault()
-  console.log('submitted')
   const $message = document.getElementById('message')
   socket.emit('send message', $message.value)
   $message.value = ''
 }
 socket.on('send message', (data) => {
-  console.log(data.user)
   let $chat = document.getElementById('chat')
   let $newMessage = document.createElement('div')
   let $username = document.createElement('strong')
@@ -25,7 +23,6 @@ function getUsername(event) {
   event.preventDefault()
   const $username = document.getElementById('username')
   socket.emit('new user', $username.value, (data) => {
-    console.log('new user')
     if (data) {
       const $userFormArea = document.getElementById('userFormArea')
       const $messageArea = document.getElementById('messageArea')
