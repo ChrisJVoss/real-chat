@@ -12,7 +12,7 @@ socket.on('send message', (data) => {
   let $newMessage = document.createElement('div')
   let $username = document.createElement('strong')
   $newMessage.classList.add('well')
-  $newMessage.textContent =data.user + ': ' + data.msg
+  $newMessage.textContent = data.user + ': ' + data.msg
   $chat.appendChild($newMessage)
   $chat.scrollTop = 999999999
 })
