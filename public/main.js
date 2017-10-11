@@ -5,10 +5,11 @@ function onSubmit(event) {
   event.preventDefault()
   console.log('submitted')
   const $message = document.getElementById('message')
-  socket.emit('chat message', $message.value)
+  socket.emit('send message', $message.value)
   $message.value = ''
 }
 socket.on('send message', (data) => {
+  console.log("recieved")
   let $chat = document.getElementById('chat')
   let $newMessage = document.createElement('div')
   let $username = document.createElement('strong')
