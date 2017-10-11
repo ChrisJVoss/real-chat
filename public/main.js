@@ -25,14 +25,14 @@ $form.addEventListener('submit', onSubmit, false)
 
 function getUsername(event) {
   event.preventDefault()
-  const $username = document.getElementsByClassName('username')
+  const $username = document.getElementById('username')
   socket.emit('new user', $username.value, (data) => {
+    console.log('new user')
     if (data) {
       const $userFormArea = document.getElementById('userFormArea')
       const $messageArea = document.getElementById('messageArea')
       $messageArea.classList.remove('hidden')
       $userFormArea.classList.add('hidden')
-
     }
   })
 }

@@ -23,6 +23,7 @@ io.on('connection', (socket) => {
   connections.push(socket)
   socket.on('send message', (data) => {
     io.emit('send message', {msg: data, user: socket.username})
+    console.log(socket.username)
   })
   socket.on('disconnect', () => {
     console.log('User disconnected.')
@@ -30,7 +31,8 @@ io.on('connection', (socket) => {
     users.splice(users.indexOf(socket.username), 1)
     updateUsernames()
   })
-  socket.on('new user', (data) => {
+  socket.on('new user', (data, callback) => {
+    callback(true)
     socket.username = data
     users.push(socket.username)
     updateUsernames()
