@@ -5,3 +5,8 @@ body {
 .hidden {
   display: none;
 }
+
+.messageForm {
+  position: absolute;
+  bottom: 5px;
+}
