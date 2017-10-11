@@ -14,6 +14,7 @@ socket.on('send message', (data) => {
   $newMessage.classList.add('well')
   $newMessage.textContent =data.user + ': ' + data.msg
   $chat.appendChild($newMessage)
+  $chat.scrollTop = 999999999
 })
 
 const $form = document.getElementById('messageForm')

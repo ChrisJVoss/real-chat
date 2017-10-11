@@ -10,3 +10,8 @@ body {
   position: absolute;
   bottom: 5px;
 }
+
+#chat {
+  height: 500px;
+  overflow-y: scroll;
+}
