@@ -9,14 +9,12 @@ function onSubmit(event) {
   $message.value = ''
 }
 socket.on('send message', (data) => {
-  console.log("recieved")
+  console.log(data.user)
   let $chat = document.getElementById('chat')
   let $newMessage = document.createElement('div')
   let $username = document.createElement('strong')
-  $username.textContent = data.user + ':'
   $newMessage.classList.add('well')
-  $newMessage.appendChild($username)
-  $newMessage.textContent = data.msg
+  $newMessage.textContent =data.user + ': ' + data.msg
   $chat.appendChild($newMessage)
 })
 

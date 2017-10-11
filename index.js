@@ -22,8 +22,8 @@ io.on('connection', (socket) => {
   console.log('User connected.')
   connections.push(socket)
   socket.on('send message', (data) => {
-    io.emit('send message', {msg: data, user: socket.username})
     console.log(socket.username)
+    io.emit('send message', {msg: data, user: socket.username})
   })
   socket.on('disconnect', () => {
     console.log('User disconnected.')
