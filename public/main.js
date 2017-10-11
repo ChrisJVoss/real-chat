@@ -40,6 +40,7 @@ $userForm.addEventListener('submit', getUsername, false)
 
 socket.on('get users', (data) => {
   const $users = document.getElementById('users')
+  $users.innerHTML = ''
   for (let i = 0; i <  data.length; i++) {
     const $li = document.createElement('li')
      $li.textContent = data[i]
