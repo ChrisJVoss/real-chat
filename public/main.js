@@ -66,3 +66,31 @@ class userForm extends React.Component {
     )
   }
 }
+
+class messageArea extends React.Component {
+  renderMessage() {
+    return (
+      <div class="row hidden" id="messageArea">
+        <div class="col-md-4">
+          <div class="well">
+            <h3>Online Users</h3>
+            <ul class="list-group" id="users"></ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="chat" id="chat"></div>
+        </div>
+        <div class="col-md-8 messageForm">
+          <form id="messageForm">
+            <div class="form-group">
+              <label>Enter Message</label>
+              <textarea class="form-control" id="message"></textarea>
+              <br/>
+              <input type="submit" class="btn btn-primary" value="Send Message"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    )
+  }
+}
