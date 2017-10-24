@@ -47,3 +47,22 @@ socket.on('get users', (data) => {
      $users.appendChild($li)
   }
 })
+
+class userForm extends React.Component {
+  renderForm() {
+    return (
+      <div class="row" id="userFormArea">
+        <div class="col-md-12">
+          <form id="userForm">
+            <div class="form-group">
+              <label>Enter Username</label>
+              <input class="form-control" id="username"/>
+              <br/>
+              <input type="submit" class="btn btn-primary" value="Login"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    )
+  }
+}
